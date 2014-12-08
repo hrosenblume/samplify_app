@@ -56,9 +56,11 @@ app.post('/histogram', function(req, res) {
 				res.render('404');
 			} else {
 				console.log('THIS WAS HIT 2');
-				//res.send(str);
+				artist = artist.split('+').join(' ');
+				artist = toTitleCase(artist);
 				res.render('histogram', {
-					data: str
+					data: str,
+					artist: artist
 				});
 			}
 		});
@@ -88,8 +90,11 @@ app.post('/radar', function(req, res) {
 				res.render('404');
 			} else {
 				console.log('THIS WAS HIT 2');
+				artist = artist.split('+').join(' ');
+				artist = toTitleCase(artist);
 				res.render('radar', {
-					data: str
+					data: str,
+					artist: artist
 				});
 			}
 		});
@@ -136,3 +141,7 @@ app.post('/nodes', function(req, res) {
 app.listen(process.env.PORT || 4000);
 console.log('magic happens on port 4000');
 exports = module.exports = app;
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}

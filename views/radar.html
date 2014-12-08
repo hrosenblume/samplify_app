@@ -19,10 +19,13 @@
   </body>
 
   <script type="text/javascript">
-    var string =(<%- JSON.stringify(data) %>);
+    var string = (<%- JSON.stringify(data) %>);
     var data = string.substring(9, string.length);
     data = JSON.parse(data);
     console.log(data);
+    var artist = (<%- JSON.stringify(artist) %>);
+    var title = "Genre Influences on " + artist;
+
     $(function () {
       $('#container').highcharts({
         chart: {
@@ -30,14 +33,16 @@
             type: 'area'
         },
         title: {
-            text: 'Genre Influences',
-            x: -40
+            text: title,
+        },
+        subtitle: {
+            text: 'Powered by Samplify'
         },
         pane: {
             size: '80%'
         },
         xAxis: {
-            categories: ['hip-hop/rnb', 'electronic/dance', 'rock/pop', 'soul/funk/disco', 'jazz/blues','reggae','country/folk','world','soundtrack','classical','spoken','easy','gospel','other'],
+            categories: ['Hip-Hop/R&B', 'Electronic/Dance', 'Rock/Pop', 'Soul/Funk/Disco', 'Jazz/Blues','Reggae','Country/Folk','World','Soundtrack','Classical','Spoken Word','Easy Listening','Gospel','Other'],
             tickmarkPlacement: 'on',
             lineWidth: 0
         },
@@ -48,7 +53,7 @@
         },
         tooltip: {
             shared: true,
-            pointFormat: '<span style="color: {series.color}>Total borrowed from this genre: <b> {point.y}</b><br/>'
+            pointFormat: '<span style="color: {series.color}>Total samples borrowed from this genre: <b>{point.y}</b><br/>'
             // pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
         },
         legend: {
@@ -58,7 +63,7 @@
             layout: 'vertical'
         },
         series: [{
-            name: 'Artist',
+            name: artist,
             data: [data.hip, data.dance, data.rock, data.soul, data.jazz, data.reggae, data.country, data.world, data.soundtrack, data.classical, data.spoken, data.easy, data.gospel, data.other],
             pointPlacement: 'on',
             color: '#5cb85c'

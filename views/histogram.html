@@ -22,19 +22,22 @@
     var data = string.substring(9, string.length);
     data = JSON.parse(data);
     console.log(data);
+    var artist = (<%- JSON.stringify(artist) %>);
+    var title = "Decade Influences on " + artist;
+
     $(function () {
       $('#container').highcharts({
         chart: {
             type: 'bar'
         },
         title: {
-            text: 'Artist by Time Period'
+            text: title
         },
         subtitle: {
             text: 'Powered by Samplify'
         },
         xAxis: {
-            categories: ['before 1970', '70s', '80s', '90s', 'after 2000'],
+            categories: ['Before 1970', "1970's", "1980's", "1990's", '2000 & After'],
             title: {
                 text: null
             }
@@ -42,7 +45,7 @@
         yAxis: {
             min: 0,
             title: {
-                text: 'Number of Songs',
+                text: 'Number of Samples',
                 align: 'high'
             },
             labels: {
@@ -50,7 +53,8 @@
             }
         },
         tooltip: {
-            valueSuffix: ' millions'
+            shared: true,
+            pointFormat: '<span style="color: {series.color}>Total borrowed from this time period: <b>{point.y}</b><br/>'
         },
         plotOptions: {
             bar: {
@@ -74,7 +78,7 @@
             enabled: false
         },
         series: [{
-            name: 'Artist',
+            name: artist,
             data: [data.older, data.seventies, data.eighties, data.nineties, data.modern],
             color: '#5cb85c'
         }]
