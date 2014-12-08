@@ -14,6 +14,7 @@
   <body>
     <div class="plot-container plotly">
       <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+      <div id="samples"></div>
     </div>
   </body>
 
@@ -79,10 +80,42 @@
         },
         series: [{
             name: artist,
-            data: [data.older, data.seventies, data.eighties, data.nineties, data.modern],
+            data: [data.older.length, data.seventies.length, data.eighties.length, data.nineties.length, data.modern.length],
             color: '#5cb85c'
         }]
       });
     });
+  </script>
+
+  <script>
+    $('#samples').append("<b>1970 & Before Samples</b><br>");
+    for (var x = 0; x < data.older.length; x++) {
+        $('#samples').append(data.older[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>1970's Samples</b><br>");
+    for (var x = 0; x < data.seventies.length; x++) {
+        $('#samples').append(data.seventies[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>1980's Samples</b><br>");
+    for (var x = 0; x < data.eighties.length; x++) {
+        $('#samples').append(data.eighties[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>1990's Samples</b><br>");
+    for (var x = 0; x < data.nineties.length; x++) {
+        $('#samples').append(data.nineties[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>2000 & After Samples</b><br>");
+    for (var x = 0; x < data.modern.length; x++) {
+        $('#samples').append(data.modern[x] + "<br>");
+    }
+    $('#samples').append("<br>");
   </script>
 </html>

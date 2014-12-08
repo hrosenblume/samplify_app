@@ -15,6 +15,7 @@
   <body>
     <div class="plot-container plotly">
       <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+      <div id="samples"></div>
     </div>
   </body>
 
@@ -64,11 +65,96 @@
         },
         series: [{
             name: artist,
-            data: [data.hip, data.dance, data.rock, data.soul, data.jazz, data.reggae, data.country, data.world, data.soundtrack, data.classical, data.spoken, data.easy, data.gospel, data.other],
+            data: [data.hip.length, data.dance.length, data.rock.length, data.soul.length, data.jazz.length, data.reggae.length, data.country.length, data.world.length, data.soundtrack.length, data.classical.length, data.spoken.length, data.easy.length, data.gospel.length, data.other.length],
             pointPlacement: 'on',
             color: '#5cb85c'
         }]
       });
     });
+  </script>
+  <script>
+    $('#samples').append("<b>Hip-Hop/R&B Samples</b><br>");
+    for (var x = 0; x < data.hip.length; x++) {
+        $('#samples').append(data.hip[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Electronic/Dance Samples</b><br>");
+    for (var x = 0; x < data.dance.length; x++) {
+        $('#samples').append(data.dance[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Rock/Pop Samples</b><br>");
+    for (var x = 0; x < data.rock.length; x++) {
+        $('#samples').append(data.rock[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Soul/Funk/Disco Samples</b><br>");
+    for (var x = 0; x < data.soul.length; x++) {
+        $('#samples').append(data.soul[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Jazz/Blues Samples</b><br>");
+    for (var x = 0; x < data.jazz.length; x++) {
+        $('#samples').append(data.jazz[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Reggae Samples</b><br>");
+    for (var x = 0; x < data.reggae.length; x++) {
+        $('#samples').append(data.reggae[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Country Samples</b><br>");
+    for (var x = 0; x < data.country.length; x++) {
+        $('#samples').append(data.country[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>World Samples</b><br>");
+    for (var x = 0; x < data.world.length; x++) {
+        $('#samples').append(data.world[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Soundtrack Samples</b><br>");
+    for (var x = 0; x < data.soundtrack.length; x++) {
+        $('#samples').append(data.soundtrack[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Classical Samples</b><br>");
+    for (var x = 0; x < data.classical.length; x++) {
+        $('#samples').append(data.classical[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Spoken Word Samples</b><br>");
+    for (var x = 0; x < data.spoken.length; x++) {
+        $('#samples').append(data.spoken[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Easy Listening Samples</b><br>");
+    for (var x = 0; x < data.easy.length; x++) {
+        $('#samples').append(data.easy[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Gospel Samples</b><br>");
+    for (var x = 0; x < data.gospel.length; x++) {
+        $('#samples').append(data.gospel[x] + "<br>");
+    }
+    $('#samples').append("<br>");
+
+    $('#samples').append("<b>Other Samples</b><br>");
+    for (var x = 0; x < data.other.length; x++) {
+        $('#samples').append(data.other[x] + "<br>");
+    }
+    $('#samples').append("<br>");
   </script>
 </html>
