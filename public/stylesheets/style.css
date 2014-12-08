@@ -16,6 +16,16 @@ h1 {
  /* color:#27AE60;*/
 }
 
+h2 {
+  font-family: 'blanch';
+  font-size: 60px;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0px;
+  line-height: 0.5em;
+ /* color:#27AE60;*/
+}
+
 li{
   list-style-type: none;
   text-size:14px;

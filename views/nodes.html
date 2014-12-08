@@ -1,68 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Artist Influence Graph | Samplify</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script type="text/javascript" src="/scripts/raphael-min.js"></script>
+    <script type="text/javascript" src="/scripts/dracula_graffle.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/dracula_graph.js"></script>
+    <script type="text/javascript" src="/scripts/dracula_algorithms.js"></script>
+    <style type="text/css">
+      body {
+      overflow: hidden;
+      }
+    </style>
+</head>
+<body>
+  <h2 id="title">Genealogy of </h2>
+  <div class="center-div" id="canvas"></div>
+</body>
+<script>
+  var string = (<%- JSON.stringify(data) %>);
+  var data = string.substring(9, string.length);
+  data = JSON.parse(data);
+  console.log(data);
+  console.log('BREAK');
+  for (var x = 0; x < data.length; x++) {
+    console.log(data[x][0]);
+    for (var y = 0; y < data[x][1].length; y++) {
+      console.log(data[x][1][y]);
+    }
+  }
+</script>
 
-    <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<script>
+  $(document).ready(function() {
+    var width = $(document).width()/2;
+    var height = $(document).height()/2;
+    var g = new Graph();
+    g.edgeFactory.template.style.directed = true;
 
-  <!-- Font -->
-   <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-  
-  <link rel='stylesheet' href='stylesheets/style.css'>
+    var string = (<%- JSON.stringify(data) %>);
+    var data = string.substring(9, string.length);
+    data = JSON.parse(data);
+    var song = (<%- JSON.stringify(song) %>);
+    $('#title').append(song);
 
-  <script src="Chart.js"></script>
-  <script type="text/javascript" src="../scripts/node.js"></script>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <link href="stylesheets/node.css" rel="stylesheet" type="text/css" />
-  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-  <link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
-  <script src="http://visjs.org/dist/vis.js"></script>
-
-  <style type="text/css">
-    #mynetwork {
-      width: 400px;
-      height: 400px;
-      border: 1px solid lightgray;
+    for (var x = 0; x < data.length; x++) {
+      g.addEdge(song,data[x][0]);
+      for (var y = 0; y < data[x][1].length; y++) {
+          if (data[x][1][y] != null) g.addEdge(data[x][0],data[x][1][y]);
+      }
     }
 
-  </head>
-  <body>
-  <div id="mynetwork"></div>
-  <script type="text/javascript">
-    // create an array with nodes
-    var nodes = [
-      {id: 1, label: 'Node 1'},
-      {id: 2, label: 'Node 2'},
-      {id: 3, label: 'Node 3'},
-      {id: 4, label: 'Node 4'},
-      {id: 5, label: 'Node 5'}
-    ];
-    // create an array with edges
-    var edges = [
-      {from: 1, to: 2},
-      {from: 1, to: 3},
-      {from: 2, to: 4},
-      {from: 2, to: 5}
-    ];
-    // create a network
-    var container = document.getElementById('mynetwork');
-    var data = {
-      nodes: nodes,
-      edges: edges
-    };
-    var options = {};
-    var network = new vis.Network(container, data, options);
-  </script>
-
-
-    </div>
-  </body>
+    var layouter = new Graph.Layout.Ordered(g, topological_sort(g));
+    var renderer = new Graph.Renderer.Raphael('canvas', g, width, height);
+  });
+</script>
 </html>

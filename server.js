@@ -124,10 +124,11 @@ app.post('/nodes', function(req, res) {
 				res.render('404');
 			} else {
 				console.log('THIS WAS HIT 2');
+				song = song.split('+').join(' ');
+				song = toTitleCase(song);
 				res.render('nodes', {
-					locals: {
-						data: str
-					}
+					data: str,
+					song: song
 				});
 			}
 		});
