@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Genre Influence Graph | Samplify</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  </head>
+
+  <body>
+    <div class="plot-container plotly">
+      <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var string =(<%- JSON.stringify(data) %>);
+    var data = string.substring(9, string.length);
+    data = JSON.parse(data);
+    console.log(data);
+    $(function () {
+      $('#container').highcharts({
+        chart: {
+            polar: true,
+            type: 'area'
+        },
+        title: {
+            text: 'Genre Influences',
+            x: -40
+        },
+        pane: {
+            size: '80%'
+        },
+        xAxis: {
+            categories: ['hip-hop/rnb', 'electronic/dance', 'rock/pop', 'soul/funk/disco', 'jazz/blues','reggae','country/folk','world','soundtrack','classical','spoken','easy','gospel','other'],
+            tickmarkPlacement: 'on',
+            lineWidth: 0
+        },
+        yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            min: 0
+        },
+        tooltip: {
+            shared: true,
+            pointFormat: '<span style="color: {series.color}>Total borrowed from this genre: <b> {point.y}</b><br/>'
+            // pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+        },
+        legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 70,
+            layout: 'vertical'
+        },
+        series: [{
+            name: 'Artist',
+            data: [data.hip, data.dance, data.rock, data.soul, data.jazz, data.reggae, data.country, data.world, data.soundtrack, data.classical, data.spoken, data.easy, data.gospel, data.other],
+            pointPlacement: 'on',
+            color: '#5cb85c'
+        }]
+      });
+    });
+  </script>
+</html>

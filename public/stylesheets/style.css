@@ -1,0 +1,104 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+  color: #8e857a;
+  /*font-family: 'Maven Pro', sans-serif;*/
+  font-family: Gudea, arial, verdana;
+}
+
+h1 {
+  font-family: 'blanch';
+  font-size: 100px;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0px;
+  line-height: 0.5em;
+ /* color:#27AE60;*/
+}
+
+li{
+  list-style-type: none;
+  text-size:14px;
+}
+
+ul{
+  background:none;
+}
+img {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+
+}
+button{
+  width: 100px;
+  background: #27AE60;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.inside-data {
+  background-color: none; 
+}
+.subtitle {
+  font-size: 15px;
+}
+
+.blank-space {
+  background-color: #33cccc;
+  width: 70%;
+  padding: 1vh;
+  margin: 5vh auto;
+  border-radius: 1vh;
+}
+
+.graph-name {
+  font-size: 30px;
+}
+
+.artist-name {
+  text-align: left;
+  padding-top: 1vh;
+}
+
+@font-face {
+    font-family: blanch;
+    src: url(../fonts/blanch_caps.ttf);
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.center-div {
+  display: table;
+  margin: 0 auto;
+}
+
+.header-img {
+  margin-top: 100px;
+  width: 200px;
+}
+
+form {
+  margin-bottom: 50px;
+}
+
+.artist-form {
+  margin-top: 1em;
+  width: 200px;
+}
+
+.sub-title {
+  width: 230px;
+  text-align: center;
+  display: table;
+  margin: 0 auto;
+}

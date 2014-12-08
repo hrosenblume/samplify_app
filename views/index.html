@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Artist Influence Graph | Samplify</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <!-- Font -->
+   <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  
+  <link rel='stylesheet' href='/stylesheets/style.css'>
+
+  </head>
+  <body class="container">
+    <img class="header-img" src="../img/record.png">
+    <h1>SAMPLIFY</h1>
+    <div class="center-div">
+      <form action="/input" method="post">
+          <div class="radio"> 
+            <label> <input type="radio" name="option" value="nodes" checked>Single Song Genealogy</label>
+          </div>
+          <div class="radio">
+            <label> <input type="radio" name="option" value="radar">Genre Influence on Artist</label>
+          </div>
+          <div class="radio">
+            <label> <input type="radio" name="option" value="histogram">Decade Influence on Artist</label>
+          </div>
+          <input class="btn btn-success next width-100" type="submit" value="Next">
+        </div>
+      </form>
+    </div>
+
+  </body>
+</html>
